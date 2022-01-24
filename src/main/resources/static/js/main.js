@@ -10,7 +10,7 @@ var messageArea = document.querySelector('#messageArea');
 var connectingElement = document.querySelector('.connecting');
 
 var stompClient = null;
-var stompClientAlways = null;
+// var stompClientAlways = null;
 var username = null;
 
 var colors = [
@@ -25,8 +25,8 @@ function connect(event) {
         usernamePage.classList.add('hidden');
         chatMessage.classList.remove('hidden');
 
-        var socket = new SockJS('/javatechie');
-        stompClient = Stomp.over(socket);
+        // var socket = new SockJS('/javatechie');
+        // stompClient = Stomp.over(socket);
         stompClient.connect({}, onConnected, onError);
     }
     event.preventDefault();
@@ -34,13 +34,13 @@ function connect(event) {
 function alwaysconnect() {
       // username = 'anonymous';
       var socket = new SockJS('/javatechie');
-      var stompClientAlways = Stomp.over(socket);
-      stompClientAlways.connect({}, alwaysOnConnected, onError);
+      stompClient = Stomp.over(socket);
+      stompClient.connect({}, alwaysOnConnected, onError);
       
 }
 function alwaysOnConnected() {
   // Subscribe to the Public Topic
-  stompClientAlways.subscribe('/topic/public', onMessageReceived);
+  stompClient.subscribe('/topic/public', onMessageReceived);
   // stompClient.send("/app/chat.register",
   //       {},
   //       JSON.stringify({sender: username, type: 'JOIN'})
