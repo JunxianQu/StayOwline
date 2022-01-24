@@ -3,54 +3,65 @@
 <head>
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-<title>Slacking Chatroom | Phoenix</title>
+<title>StayOwline | Phoenix</title>
+<link rel="icon" href="image/logo.png" type="image/x-icon">
 <link rel="stylesheet" href="/css/main.css" />
 </head>
-<body >
-  <video autoplay muted loop id="myVideo">
-    <source src="blackscreen.mp4" type="video/mp4">
-  </video>
+<body 
+	style="background-position: center; background-repeat: no-repeat; background-size: cover;">
 	<noscript>
 		<h2>Sorry! Your browser doesn't support Javascript</h2>
 	</noscript>
   
-	<div id="username-page">
-		<div class="username-page-container">
-			<h1 class="title">Type your username</h1>
-			<form id="usernameForm" name="usernameForm">
-				<div class="form-group">
-					<input type="text" id="name" placeholder="Username"
-						autocomplete="off" class="form-control" />
-				</div>
-				<div class="form-group">
-					<button type="submit" class="accent username-submit">Start
-						Chatting</button>
-				</div>
-			</form>
-		</div>
-	</div>
+  
+  <video autoplay muted loop id="myVideo">
+    <source src="black.mp4" type="video/mp4">
+  </video>
+    <div id="username-page">
+      <div class="username-page-container">
+        Type your username to Join the chat!
+        <form id="usernameForm" name="usernameForm">
+          <div  class="form-group">
+          <div class="input-group clearfix">
+            <input type="text" id="name" placeholder="Username"
+              autocomplete="off" class="form-control" />
+            <button type="submit" class="primary">Join</button>
+          </div>
+        </div>
+        </form>
+      </div>
+    </div>
 
-	<div id="chat-page" class="hidden">
-		<div class="chat-container">
-			<div class="chat-header">
-				<h2>SlackingPros Chat</h2>
-			</div>
-			<div class="connecting">Connecting...</div>
-			<ul id="messageArea">
-
-			</ul>
-			<form id="messageForm" name="messageForm" nameForm="messageForm">
-				<div class="form-group">
-					<div class="input-group clearfix">
-						<input type="text" id="message" placeholder="Type a message..."
-							autocomplete="off" class="form-control" />
-						<button type="submit" class="primary">Send</button>
-					</div>
-				</div>
-			</form>
-		</div>
-	</div>
-
+  <div class="main-container">
+    <div  align="center" class="logo">
+      <img src="image/logo.png" width="66" height="66">
+    </div>
+    <div id="chat-page" >
+      <div class="chat-container">
+        <div class="chat-header">
+          <img src="image/spearker.png" width="30" height="30">
+          &nbsp;Keep this page active to be available forever
+          <img src="image/tick.png" width="20" height="20">
+        </div>
+        <div class="connecting">Connecting...</div>
+        <ul id="messageArea">
+        </ul>
+          <form id="messageForm" name="messageForm" nameForm="messageForm" >
+            <div  class="form-group" >
+              <div id="chat-message" class="input-group clearfix hidden">
+                <input type="text" id="message" placeholder="Type a message..."
+                  autocomplete="off" class="form-control" />
+                <button type="submit" class="primary">Send</button>
+              </div>
+            </div>
+          </form>
+      </div> 
+      <div class="note">*All the messages are anonymous</div>
+    </div>
+    <br>
+   <div class="footnote" align="center">Phoenix@StayOwline.com</div>
+</div>
+  
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
 	<script

@@ -2,6 +2,7 @@
 
 var usernamePage = document.querySelector('#username-page');
 var chatPage = document.querySelector('#chat-page');
+var chatMessage = document.querySelector('#chat-message');
 var usernameForm = document.querySelector('#usernameForm');
 var messageForm = document.querySelector('#messageForm');
 var messageInput = document.querySelector('#message');
@@ -21,17 +22,31 @@ function connect(event) {
 
     if(username) {
         usernamePage.classList.add('hidden');
-        chatPage.classList.remove('hidden');
+        chatMessage.classList.remove('hidden');
 
-        var socket = new SockJS('/javatechie');
-        stompClient = Stomp.over(socket);
-
+        // var socket = new SockJS('/javatechie');
+        // stompClient = Stomp.over(socket);
         stompClient.connect({}, onConnected, onError);
     }
     event.preventDefault();
 }
-
-
+function alwaysconnect() {
+      // username = 'anonymous';
+      var socket = new SockJS('/javatechie');
+      stompClient = Stomp.over(socket);
+      stompClient.connect({}, alwaysOnConnected, onError);
+      
+}
+function alwaysOnConnected() {
+  // Subscribe to the Public Topic
+  stompClient.subscribe('/topic/public', onMessageReceived);
+  // stompClient.send("/app/chat.register",
+  //       {},
+  //       JSON.stringify({sender: username, type: 'JOIN'})
+  //   )
+  // Tell your username to the server
+  
+  }
 function onConnected() {
     // Subscribe to the Public Topic
     stompClient.subscribe('/topic/public', onMessageReceived);
@@ -117,5 +132,6 @@ function getAvatarColor(messageSender) {
     return colors[index];
 }
 
+alwaysconnect()
 usernameForm.addEventListener('submit', connect, true)
 messageForm.addEventListener('submit', send, true)
